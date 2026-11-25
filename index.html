@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HajjPak — Hajj Application &amp; Package Tracker (UX Concept)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo">H</span> HajjPak</div>
+  <p class="tagline">The journey of a lifetime. Without the guesswork. — Hajj application &amp; package tracker for Pakistan</p>
+  <p class="sample-note">SAMPLE DATA — every scheme, price, licence, application, agent and checklist item shown here is invented for this UX concept demo. The government-scheme figure (Rs 10,75,000 per person) is a sample figure for this concept, not the official 2026 package cost. These are NOT real schemes, real agents, real applicants or real prices. No real CNIC numbers and no phone numbers appear anywhere.</p>
+</header>
+
+<nav class="tabs" aria-label="HajjPak sections">
+  <button id="tab-schemes" class="tab-btn active" data-tab="schemes">Schemes</button>
+  <button id="tab-cost" class="tab-btn" data-tab="cost">Cost Calculator</button>
+  <button id="tab-balloting" class="tab-btn" data-tab="balloting">Balloting Tracker</button>
+  <button id="tab-verify" class="tab-btn" data-tab="verify">Agent Verifier &amp; Checklist</button>
+</nav>
+
+<main>
+  <!-- Schemes -->
+  <section class="card" id="section-schemes">
+    <p class="eyebrow">SCHEMES — HAJJ 2026, 6 SAMPLE PACKAGES</p>
+    <h2>The real price, before you pay it.</h2>
+    <p class="hint">Haji Muhammad Rafiq, 58, Peshawar, is applying with his wife Amina, 52, for Hajj 2026 under the government scheme — Rs 10,75,000 per person, long package. Private packages run Rs 11,50,000 to Rs 14,50,000. One "bargain" at Rs 8,50,000 is flagged fraud. Search by operator, city or licence.</p>
+    <div class="verify-row">
+      <label>Search schemes
+        <input id="scheme-search" type="text" value="" placeholder="Try: Peshawar, private, HGO-2026-114">
+      </label>
+      <label>Sort by
+        <select id="scheme-sort">
+          <option value="cheapest">Cheapest first</option>
+          <option value="expensive">Most expensive first</option>
+          <option value="kind">Government first</option>
+        </select>
+      </label>
+    </div>
+    <div id="scheme-list"></div>
+    <p id="scheme-summary"></p>
+    <div id="cheapest-box"></div>
+  </section>
+
+  <!-- Cost calculator -->
+  <section class="card" id="section-cost" style="display:none">
+    <p class="eyebrow">COST CALCULATOR — THE PRICE IS NOT THE WHOLE BILL</p>
+    <h2>Rs 21,50,000 is not the whole bill.</h2>
+    <p class="hint">The government long package is Rs 10,75,000 per person — Rs 21,50,000 for Rafiq and Amina. But the package does not include Qurbani, extra meals, airport transfers, a SIM, laundry or tips: Rs 97,500 more per person. Reveal the hidden costs to see the real total.</p>
+    <div class="verify-row">
+      <label>Package price per person (Rs)
+        <input id="cost-price-input" type="number" value="1075000" min="0" step="1000">
+      </label>
+      <label>People travelling
+        <input id="cost-people-input" type="number" value="2" min="0" step="1">
+      </label>
+    </div>
+    <div class="verify-row">
+      <label class="check-label">
+        <input id="cost-hidden-check" type="checkbox" checked>
+        Reveal the hidden costs (Rs 97,500 per person)
+      </label>
+      <button id="cost-btn">Work out the real total</button>
+    </div>
+    <div id="cost-result"></div>
+    <h3>What the package price does not include</h3>
+    <div id="hidden-list"></div>
+    <p id="hidden-summary"></p>
+  </section>
+
+  <!-- Balloting tracker -->
+  <section class="card" id="section-balloting" style="display:none">
+    <p class="eyebrow">BALLOTING TRACKER — DRAW 5 DEC 2026</p>
+    <h2>Ten days to the draw. No more guessing.</h2>
+    <p class="hint">Rafiq and Amina applied together under the government scheme, application HAJ-2026-4812, submitted 18 Nov 2026 at the Bank of Khyber, University Road branch, Peshawar. The balloting draw is on 5 Dec 2026 — 10 days from today, 25 Nov 2026.</p>
+    <div class="verify-row">
+      <label>Check an application number
+        <input id="app-input" type="text" value="HAJ-2026-4812" placeholder="HAJ-2026-4812">
+      </label>
+      <button id="app-btn">Check my application</button>
+    </div>
+    <div id="app-result"></div>
+    <div id="countdown-box"></div>
+    <h3>Sample applications for Hajj 2026</h3>
+    <div id="app-list"></div>
+    <p id="app-summary"></p>
+  </section>
+
+  <!-- Agent verifier & checklist -->
+  <section class="card" id="section-verify" style="display:none">
+    <p class="eyebrow">AGENT VERIFIER &amp; CHECKLIST — CHECK BEFORE YOU PAY</p>
+    <h2>A licence you can check. A list you can finish.</h2>
+    <p class="hint">Before Rafiq pays anyone a rupee, he checks the operator's HGO licence here. HGO-2026-114 (Al-Noor Hajj Services, Peshawar) is verified. HGO-2026-077 (Quick Hajj Deals) is flagged fraud. Then the document and vaccination checklist — 5 of 8 done — and the scam spotter.</p>
+    <h3>Check an agent's licence</h3>
+    <div class="verify-row">
+      <label>Licence number
+        <input id="licence-input" type="text" value="HGO-2026-114" placeholder="HGO-2026-114">
+      </label>
+      <button id="licence-btn">Verify this licence</button>
+    </div>
+    <div id="licence-result"></div>
+    <h3>Scam spotter — flag or safe?</h3>
+    <p class="hint">Six things an agent might say or do. Call each one a red flag or a safe sign, then check your score.</p>
+    <div id="scam-list"></div>
+    <div class="verify-row">
+      <button id="scam-btn">Check my score</button>
+    </div>
+    <div id="scam-result"></div>
+    <h3>Document &amp; vaccination checklist</h3>
+    <p class="hint">Rafiq and Amina's checklist for Hajj 2026. Tick things off as they are done — it saves on this device.</p>
+    <div id="checklist"></div>
+    <p id="checklist-progress"></p>
+    <h3>Hajj training in Peshawar</h3>
+    <div id="training-list"></div>
+  </section>
+
+  <button id="reset-demo" class="secondary">Reset demo data</button>
+</main>
+
+<footer>
+  <p>HajjPak is an unofficial UX concept by Muhammad Abbas Khan — not a Hajj operator, not a travel agent and not the Ministry of Religious Affairs. All schemes, prices, licences, applications, agents and checklist items are sample data.</p>
+  <p>Available for new projects: abbasmomand98@gmail.com</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
